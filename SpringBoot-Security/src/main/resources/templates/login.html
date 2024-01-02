@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+		<div class="container p-3">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="card">
+						<div class="card-header text-center fs-4">Login Page</div>
+					
+						<div th:if="${param.error}" class="text-center text-danger fs-5">
+    						<p th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></p>
+						</div>
+
+						<div class="card-body">
+							<form action="#" th:action="@{/userLogin}"  method="post">
+
+								<div class="mb-3">
+									<label>Enter Email</label> <input type="text" name="username"
+										class="form-control">
+								</div>
+								<div class="mb-3">
+									<label>Enter Password</label> 
+									<input type="password" name="password" class="form-control">
+								</div>
+								<button class="btn btn-primary col-md-12">Login</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+</body>
+</html>
