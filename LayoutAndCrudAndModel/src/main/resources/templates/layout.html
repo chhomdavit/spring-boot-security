@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<meta charset="ISO-8859-1">
+
+<style type="text/css" th:replace="shared/_style"></style>
+
+<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Web Khmer</title>
+
+</head>
+
+<body>
+	<div th:replace="shared/_header"></div>
+
+	<div th:replace="shared/_menu"></div>
+
+	<div layout:fragment="content">
+		
+	
+	</div>
+
+	<div th:replace="shared/_footer"></div>
+	
+	<div th:replace="shared/_script"></div>
+</body>
+</html>

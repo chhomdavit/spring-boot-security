@@ -1,0 +1,22 @@
+<div class="card-tools">
+	<div class="row">
+	
+		<div class="col-md-6">
+			<div>Total All Pagination : [[${totalPages}]] in [[${currentPage} + 1]]</div>
+		</div>
+
+		<div class="col-md-6">
+			<ul class="pagination pagination-sm">
+				<li class="page-item" th:if="${currentPage > 0}">
+					<a class="page-link" th:href="@{/admin/employee/list(page=${currentPage - 1}, size=${pageSize}, keyword=${keyword})}">Previous</a>
+				</li>
+				<li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+					<a class="page-link" th:href="@{/admin/employee/list(page=${i}, size=${pageSize}, keyword=${keyword})}" th:text="${i + 1}"></a></li>
+				<li class="page-item" th:if="${currentPage < totalPages - 1}">
+					<a class="page-link" th:href="@{/admin/employee/list(page=${currentPage + 1}, size=${pageSize}, keyword=${keyword})}">Next</a>
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+</div>	

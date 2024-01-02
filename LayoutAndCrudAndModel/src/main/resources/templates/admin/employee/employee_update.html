@@ -1,0 +1,75 @@
+
+<button type="button" class="btn btn-primary btn-sm elevation-3" data-toggle="modal" th:data-target="'#modal-update' + ${item.id}">
+  Update
+</button>
+
+
+<div class="modal fade" th:id="'modal-update' + ${item.id}">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Update Employee</h4>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form action="#" th:action="${item.id == null ? '/admin/save' : '/admin/update/' + item.id}"
+					  th:object="${adminEmployee}" method="POST"
+					  enctype="multipart/form-data">
+					  
+					<div class="row">
+					 <input type="hidden" th:value="${item.id}" />
+
+					<div class="col-md-6 mb-3">
+						<label class="col-form-label">First Name</label> 
+						<input type="text" th:value="${item.firstName}" name="firstName" class="form-control" />
+					</div>
+
+					<div class="col-md-6 mb-3">
+						<label class="col-form-label">Last Name</label> 
+					    <input type="text" th:value="${item.lastName}" name="lastName" class="form-control"/> 
+					</div>
+					</div>
+					
+					<div class="col-md-12 mb-3">
+						<label class="col-form-label">Email</label> 
+					    <input type="text" th:value="${item.email}" name="email" class="form-control"/>  
+					</div>
+					
+					<div class="col-md-12 mb-3">
+						 <label class="form-label">Image</label>
+					     <input accept="image/*" type='file' id="imgInpUpdate" name="photo" class="form-control"/>
+					     <img id="imgPreUpdate" th:src="@{'/getimage/' + ${item.photo}}" 
+					     	  class="elevation-3 mt-3" 
+					          width="150px" height="100px"/>
+					</div>
+						
+	
+                     <div class="modal-footer">
+                     	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-info">Update</button>
+				     </div>
+				     
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	let imgInpUpdate = document.querySelector("#imgInpUpdate");
+	let imgPreUpdate = document.querySelector("#imgPreUpdate");
+	
+	imgInpUpdate.onchange = evt =>{
+		const [file] = imgInpUpdate.files;
+		if(file){
+			imgPreUpdate.src = URL.createObjectURL(file); 
+			imgPreUpdate.style.width = '150px';
+			imgPreUpdate.style.height = '100px';
+		}
+	}
+	
+</script>
+

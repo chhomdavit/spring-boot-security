@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/admin/admin_layout}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employee List</title>
+</head>
+<body>
+
+    
+    
+    <div layout:fragment="content">
+		
+        <div class="mt-5">
+        <h1 class="text-center">Employee List</h1>
+        <hr/>
+			<div class="container">
+            <!--Add User Button-->
+				<div class="my-3 row">
+					<div class="col-md-4">
+						<div th:replace="/admin/employee/employee_create"></div>
+					</div>
+					<div class="col-md-8">
+						<div th:replace="/admin/employee/employee_search"></div>
+					</div>
+				</div>
+				
+				<div th:if="${list_employees.empty}">
+                  <p class="text-center">No data available.</p>
+                </div>
+                
+                <div th:unless="${list_employees.empty}">
+				<table id="employeeTable" class="table table-striped table-hover border">
+                <thead>
+                	<tr>
+                    	<th scope="col">ID</th>
+                    	<th scope="col">firstName</th>
+                    	<th scope="col">lastName</th>
+                    	<th scope="col">email</th>
+                    	<th scope="col">Photo</th>
+                    	<th scope="col">Action</th>
+                	</tr>
+                </thead>
+                <tbody>
+					<tr th:each="item, stat : ${list_employees}" th:with="count=${stat.count}">
+						<td th:text="${count}"></td>
+						<td th:text="${item.firstName}"></td>
+						<td th:text="${item.lastName}"></td>
+						<td th:text="${item.email}"></td>
+						<td ><img alt="" th:src="@{'/getimage/' + ${item.photo}}" th:style="'border-radius: 5px; border: solid 1px'" width="150" height="100" class="elevation-3"></td>
+						<td>
+							<div th:replace="/admin/employee/employee_update"></div>
+							<div th:replace="/admin/employee/employee_delete"></div>
+						</td>
+					</tr>
+				</tbody>
+                </table>
+					<div th:replace="/admin/employee/employee_pagination"></div>
+             </div>
+			</div>
+        </div>
+        
+    </div> 
+</body>
+</html>

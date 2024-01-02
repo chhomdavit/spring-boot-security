@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">AdminLTE -</title>
+  <style type="text/css" th:replace="admin/shared/style" rel="stylesheet"></style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <div th:replace="admin/shared/navbar"></div>
+
+  <div th:replace="admin/shared/aside"></div>
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div layout:fragment="content">
+		
+	
+	      </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- /.content-wrapper -->
+  
+  <div th:replace="admin/shared/footer"></div>  
+
+  <aside class="control-sidebar control-sidebar-dark">
+ 
+  </aside>
+</div>
+
+<!-- jQuery -->
+ <div th:replace="admin/shared/script"></div>  
+</body>
+</html>
