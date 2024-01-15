@@ -10,8 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class MovieController {
 
 	@PreAuthorize("hasAuthority('ADMIN')")
-	@GetMapping("/getList")
-	public String GetMovie() {
-		return "This is movie";
+	@GetMapping("/get-admin")
+	public String GetMovieAdmin() {
+		return "This is admin";
+	}
+
+	@PreAuthorize("hasAuthority('USER')")
+	@GetMapping("/get-user")
+	public String GetMovieUser() {
+		return "This is user";
 	}
 }
