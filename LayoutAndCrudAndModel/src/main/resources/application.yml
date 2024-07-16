@@ -2,10 +2,12 @@ server:
   port: 8008
 
 spring:
+  application:
+    name: test-app
   datasource:
-    url: jdbc:postgresql://localhost:5432/spring-test
-    username: postgres
-    password: root
+    url: jdbc:postgresql://dpg-ch1qjel269v61fa7aaog-a.singapore-postgres.render.com:5432/test_database_wf2t
+    username: root
+    password: SDas1keeM5SphIwrWOhuRYrtEmTVruUW
     hikari:
       connection-timeout: 20000
       minimum-idle: 5
